@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+          /* Версия сайта 0.0.0.0. Стоп, а ты че тут делаешь? А ну брысь из командной строки! */
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать сочинения</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .files-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .file-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .download-btn {
+            background: #2575fc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #6a11cb;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Готовые сочинения</h1>
+            <p>Скачивайте качественные сочинения в формате .doc</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="files-section">
+            <h2>Доступные сочинения</h2>
+            <div class="file-list">
+                <!-- Здесь будут ссылки на файлы -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Ваш сайт. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Добавьте функциональность для кнопок скачивания
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Файл будет доступен для скачивания позже!');
+                // Здесь можно добавить логику для скачивания файла
+            });
+        });
+    </script>
+</body>
+</html>
