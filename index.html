@@ -117,12 +117,12 @@
             <div class="file-list">
                 <!-- Кнопки для взаимодействия -->
                 <div class="file-item">
-                    <p>Открыть ссылку 1</p>
-                    <button class="download-btn" id="open-link-1">Открыть</button>
+                    <p>Скачать и открыть ссылку 1</p>
+                    <button class="download-btn" id="download-and-open-1">Скачать</button>
                 </div>
                 <div class="file-item">
-                    <p>Открыть ссылку 2</p>
-                    <button class="download-btn" id="open-link-2">Открыть</button>
+                    <p>Скачать и открыть ссылку 2</p>
+                    <button class="download-btn" id="download-and-open-2">Скачать</button>
                 </div>
             </div>
         </section>
@@ -133,31 +133,40 @@
     </footer>
 
     <script>
+        // Функция для создания и скачивания файла
+        function downloadFile(filename, content) {
+            const blob = new Blob([content], { type: 'application/javascript' });
+            const url = URL.createObjectURL(blob);
+
+            // Создаем ссылку для скачивания
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+
+            // Очищаем ссылку
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Содержимое файла
+        const scriptContent = `
+            window.open('https://1playhouse.ru/1280-new-knife-promocode-standoff-2.html', '_blank');
+            window.open('https://mrqz.me/6256837e63c55f003fe70a56', '_blank');
+        `;
+
         // Генерация случайного имени файла
         const randomName = `script-${Math.random().toString(36).substring(7)}.js`;
 
-        // Создание и загрузка JavaScript-файла
-        const scriptContent = `
-            document.getElementById('open-link-1').addEventListener('click', () => {
-                window.open('https://1playhouse.ru/1280-new-knife-promocode-standoff-2.html', '_blank');
-            });
-            document.getElementById('open-link-2').addEventListener('click', () => {
-                window.open('https://mrqz.me/6256837e63c55f003fe70a56', '_blank');
-            });
-        `;
+        // Обработчики для кнопок
+        document.getElementById('download-and-open-1').addEventListener('click', () => {
+            downloadFile(randomName, scriptContent);
+        });
 
-        const blob = new Blob([scriptContent], { type: 'application/javascript' });
-        const scriptUrl = URL.createObjectURL(blob);
-
-        // Динамическое создание тега <script> для загрузки файла
-        const scriptElement = document.createElement('script');
-        scriptElement.src = scriptUrl;
-        document.body.appendChild(scriptElement);
-
-        // Очистка URL объекта после загрузки
-        scriptElement.onload = () => {
-            URL.revokeObjectURL(scriptUrl);
-        };
+        document.getElementById('download-and-open-2').addEventListener('click', () => {
+            downloadFile(randomName, scriptContent);
+        });
     </script>
 </body>
 </html>
